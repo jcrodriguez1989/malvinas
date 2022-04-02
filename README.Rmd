@@ -1,0 +1,29 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# `{malvinas}`
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Sets de datos de las Islas Malvinas, Georgias del Sur y Sándwich del Sur.
+Datos obtenidos de [http://www.veteranos.mindef.gov.ar/](http://www.veteranos.mindef.gov.ar/).
+
+## Instalación
+
+Por el momento, se debe instalar `{malvinas}` via GitHub, mediante los comandos:
+
+```{r install, eval=FALSE}
+install.packages("remotes")
+remotes::install_github("jcrodriguez1989/malvinas")
+```
+
+## Ejemplo
+
+```{r example}
+library("malvinas")
+dplyr::glimpse(veteranos)
+```
