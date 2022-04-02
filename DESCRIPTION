@@ -1,6 +1,6 @@
 Package: malvinas
 Type: Package
-Title: Islas Malvinas, Georgias del Sur y Sándwich del Sur
+Title: Islas Malvinas, Georgias Del Sur y Sándwich Del Sur
 Version: 0.1.0
 Authors@R: c(
     person(given = "Juan Cruz", family = "Rodriguez", 
@@ -8,7 +8,7 @@ Authors@R: c(
     )
   )
 Maintainer: Juan Cruz Rodriguez <jcrodriguez@unc.edu.ar>
-Description: la Nación Argentina ratifica su legítima e imprescriptible soberanía sobre las islas 
+Description: La Nación Argentina ratifica su legítima e imprescriptible soberanía sobre las islas 
   Malvinas, Georgias del Sur y Sándwich del Sur y los espacios marítimos e insulares 
   correspondientes, por ser parte integrante del territorio nacional. La recuperación de dichos 
   territorios y el ejercicio pleno de la soberanía, respetando el modo de vida de sus habitantes y 
