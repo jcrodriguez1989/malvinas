@@ -27,3 +27,37 @@ remotes::install_github("jcrodriguez1989/malvinas")
 library("malvinas")
 dplyr::glimpse(veteranos)
 ```
+
+
+Alluvial plot
+
+```{r example_alluvial, out.width="100%"}
+suppressPackageStartupMessages(library("dplyr"))
+library("ggalluvial", quietly = TRUE)
+library("malvinas")
+
+# Conteos por grupo.
+veteranos_agrupados <- mutate(
+  veteranos,
+  Sobreviviente = if_else(Categoria == "Vivos", "Si", "No"),
+  # Guardar el top-9 grados con más gente.
+  Grado = if_else(
+    Grado %in% head(count(veteranos, Grado, sort = TRUE), n = 9)$Grado, Grado, "Otro"
+  )
+) %>%
+  count(Arma, Grado, Sexo, Sobreviviente, name = "Gente") %>%
+  # Agrupar categorías muy pequeñas.
+  mutate(Arma = gsub(
+    "(Prefectura)|(Gendarmería)|(Estado Mayor Conjunto)", "Prefectura / Gendarmería / EMC", Arma
+  ))
+
+ggplot(veteranos_agrupados, aes(axis1 = Arma, axis2 = Grado, axis3 = Sobreviviente, y = Gente)) +
+  scale_x_discrete(limits = c("Arma", "Grado", "Sobreviviente"), expand = c(.2, .05)) +
+  geom_alluvium(aes(fill = Sexo)) +
+  geom_stratum() +
+  geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+  theme_minimal() +
+  ylab("Héroes y heroínas") +
+  ggtitle("Héroes y heroínas de Malvinas")
+
+```

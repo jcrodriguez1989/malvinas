@@ -45,8 +45,8 @@ veteranos <- map_dfr(armas, function(arma) {
 # Transformación de datos.
 # La verdad es que no estoy seguro si "Veteranas" se refiere al sexo o al género. TODO: Averiguarlo.
 veteranos <- mutate(veteranos, Sexo = if_else(
-  Documento %in% filter(veteranos, Categoria == "Veteranas")$Documento, "Femenino", "Masculino")
-) %>%
+  Documento %in% filter(veteranos, Categoria == "Veteranas")$Documento, "Femenino", "Masculino"
+)) %>%
   filter(Categoria != "Veteranas") %>%
   mutate(
     Apellidos = gsub(", .*", "", `Apellido y Nombre`),
